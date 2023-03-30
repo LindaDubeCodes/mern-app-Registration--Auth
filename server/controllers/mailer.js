@@ -12,7 +12,7 @@ let nodeConfig = {
     auth: {
         user: ENV.EMAIL, // generated ethereal user
         pass: ENV.PASSWORD, // generated ethereal password
-    }
+    },
 }
 
 let transporter = nodemailer.createTransport(nodeConfig);
@@ -40,7 +40,7 @@ export const registerMail = async (req, res) => {
     var email = {
         body: {
             name: username,
-            intro: text || 'Welcome to Daily Tuition! We\'re very excited to have you on board.',
+            intro: text || 'Welcome to The Platform We\'re very excited to have you on board.',
             outro: 'Need help, or have questions? Just reply to this email, we\'d love to help.'
         }
     }
@@ -51,14 +51,14 @@ export const registerMail = async (req, res) => {
     let message = {
         from: ENV.EMAIL,
         to: userEmail,
-        subject: subject || "Signup Successful",
+        subject: subject || "Welcome to The Platform",
         html: emailBody
     }
 
     // send mail
     transporter.sendMail(message)
         .then(() => {
-            return res.status(200).send({ msg: "You should receive an email from us." })
+            return res.status(200).send({ msg: "check your emails" })
         })
         .catch(error => res.status(500).send({ error }))
 

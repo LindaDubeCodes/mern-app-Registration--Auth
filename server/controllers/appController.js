@@ -160,30 +160,41 @@ export async function getUser(req, res) {
   }
 }
 
-/** PUT: http://localhost:8080/api/updateUser*/
+/** PUT: http://localhost:8080/api/updateuser 
+ * @param: {
+  "header" : "<token>"
+}
+body: {
+    firstName: '',
+    address : '',
+    profile : ''
+}
+*/
 export async function updateUser(req, res) {
   try {
-    //const id = req.query.id;
+
+    // const id = req.query.id;
     const { userId } = req.user;
 
     if (userId) {
       const body = req.body;
 
-      //update data
+      // update the data
       UserModel.updateOne({ _id: userId }, body, function (err, data) {
         if (err) throw err;
 
-        return res.status(201).send({ msg: "User Details Updated..!" });
+        return res.status(201).send({ msg: "Record Updated...!" });
       })
 
     } else {
-      return res.status(401).send({ error: "user not found...!" });
+      return res.status(401).send({ error: "User Not Found...!" });
     }
 
   } catch (error) {
     return res.status(401).send({ error });
   }
 }
+
 
 /** GET: http://localhost:8080/api/generateOTP */
 export async function generateOTP(req, res) {
@@ -216,6 +227,7 @@ export async function CreateResetSession(req, res) {
   return res.status(440).send({ error: "session expired" })
 }
 
+
 /** PUT: http://localhost:8080/api/resetPassword*/
 export async function resetPassword(req, res) {
   try {
@@ -238,7 +250,7 @@ export async function resetPassword(req, res) {
                 function (err, data) {
                   if (err) throw err;
                   req.app.locals.resetSession = false;
-                  return res.status(201).send({ msg: "Profile Updated" })
+                  return res.status(201).send({ msg: "Password Updated" })
                 });
             })
             .catch(e => {

@@ -1,0 +1,22 @@
+{
+  "name": "mern-app-login-registration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LindaDubeCodes/mern-app-Registration--Auth.git"
+  },
+  "author": "Linda Dube",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LindaDubeCodes/mern-app-Registration--Auth/issues"
+  },
+  "homepage": "https://github.com/LindaDubeCodes/mern-app-Registration--Auth#readme",
+  "dependencies": {
+    "surge": "^0.23.1"
+  }
+}
